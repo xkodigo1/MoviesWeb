@@ -1,0 +1,65 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.movie-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.movie-card .content {
+  padding: 15px;
+}
+
+.movie-card h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.movie-card p {
+  margin: 10px 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.movie-card .genre {
+  font-size: 0.8em;
+  color: #555;
+}
+
+.movie-card .actors {
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 10px;
+}
+
+.movie-card .release-date {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-top: 10px;
+}
