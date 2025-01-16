@@ -1,184 +1,25 @@
-// // JavaScript/methods.js
-// // Elementos del DOM
-// const searchBar = document.getElementById("searchBar");
-// const resultContainer = document.getElementById("result");
-// const popup = document.getElementById("popup");
-// const closePopup = document.getElementById("closePopup");
-// // Función para generar las cartas
-// export function createMovieCards(movies, container) {
-//     movies.forEach((movie) => {
-//       // Crear el contenedor principal de la carta
-//       const card = document.createElement("div");
-//       card.className = "movie-card";
-  
-//       // Crear el contenido de la carta, incluyendo la imagen
-//       card.innerHTML = `
-//         <img src="/MoviesWeb/images/${movie.image}" alt="${movie.title}">
-//         <div class="content">
-//           <h2>${movie.title}</h2>
-//           <p>${movie.summary}</p>
-//           <p class="genre">Genres: ${movie.genre.join(", ")}</p>
-//           <p class="release-date">Release Date: ${movie.releaseDate}</p>
-//           <p class="duration">Duration: ${movie.duration}</p>
-//           <p class="actors">Cast: ${movie.casting.join(", ")}</p>
-//         </div>
-//       `;
-  
-//       // Agregar la carta al contenedor principal
-//       container.appendChild(card);
-//     });
-//   }
 
-// import { movies } from '/MoviesWeb/Data/data.js';
-
-// // Función para buscar películas
-// function searchMovies(data, query) {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       const filteredMovies = data.filter(movie =>
-//         movie.title.toLowerCase().includes(query.toLowerCase())
-//       );
-
-//       if (filteredMovies.length > 0) {
-//         resolve(filteredMovies);
-//       } else {
-//         reject("No se encontraron resultados.");
-//       }
-//     }, 500); // Simula un retraso
-//   });
-// }
-
-// // Escuchar eventos de entrada en el campo de búsqueda
-// searchBar.addEventListener("input", () => {
-//   const query = searchBar.value.trim();
-
-//   // Limpiar resultados si no hay texto
-//   if (!query) {
-//     resultContainer.innerHTML = "";
-//     return;
-//   }
-
-//   // Llamar a la función de búsqueda
-//   searchMovies(movies, query)
-//     .then(movies => {
-//       resultContainer.innerHTML = movies
-//         .map(
-//           movie => `
-//           <div class="movie-item">
-//             <h3>${movie.title}</h3>
-//             <p>Género: ${movie.genre}</p>
-//           </div>
-//         `
-//         )
-//         .join("");
-//     })
-//     .catch(error => {
-//       resultContainer.innerHTML = `<p>${error}</p>`;
-//     });
-// });
-
-// // Campos del popup
-// const popupTitle = document.getElementById("popupTitle");
-// const popupGenre = document.getElementById("popupGenre");
-// const popupDescription = document.getElementById("popupDescription");
-// const popupReleaseDate = document.getElementById("popupReleaseDate");
-// const popupActors = document.getElementById("popupActors");
-// const popupDuration = document.getElementById("popupDuration");
-// Elementos del DOM
-// const searchBar = document.getElementById("searchBar");
-// const resultContainer = document.getElementById("result");
-// const popup = document.getElementById("popup");
-// const closePopup = document.getElementById("closePopup");
-
-// // Campos del popup
-// const popupTitle = document.getElementById("popupTitle");
-// const popupGenre = document.getElementById("popupGenre");
-// const popupDescription = document.getElementById("popupDescription");
-// const popupReleaseDate = document.getElementById("popupReleaseDate");
-// const popupActors = document.getElementById("popupActors");
-// const popupDuration = document.getElementById("popupDuration");
-
-// // Mostrar las películas filtradas
-// export function renderMovies(movies) {
-//   resultContainer.innerHTML = data
-//     .map(
-//       movie => `
-//       <div class="movie-item">
-//         <img src="${movie.image}" alt="${movie.title}" />
-//         <h3>${movie.title}</h3>
-//         <p>${movie.description}</p>
-//         <button onclick="showPopup(${movie.id})">Más información</button>
-//       </div>
-//     `
-//     )
-//     .join("");
-// }
-
-// // Mostrar el popup
-// function showPopup(movieId) {
-//   const movie = movies.find(m => m.id === movieId);
-//   if (movie) {
-//     popupTitle.textContent = movie.title;
-//     popupGenre.textContent = movie.genre;
-//     popupDescription.textContent = movie.description;
-//     popupReleaseDate.textContent = movie.releaseDate;
-//     popupActors.textContent = movie.actors;
-//     popupDuration.textContent = movie.duration;
-//     popup.classList.remove("hidden");
-//   }
-// }
-
-// // Cerrar el popup
-// closePopup.addEventListener("click", () => {
-//   popup.classList.add("hidden");
-// });
-
-// // Filtrar películas
-// searchBar.addEventListener("input", () => {
-//   const query = searchBar.value.trim().toLowerCase();
-//   if (!query) {
-//     resultContainer.innerHTML = "";
-//     return;
-//   }
-//   const filteredMovies = movies.filter(movie =>
-//     movie.title.toLowerCase().includes(query)
-//   );
-//   renderMovies(filteredMovies);
-// });
-
-// // Renderizar todas las películas al inicio
-// renderMovies(movies);
-// methods.js
-
-// Function to render movies
-export function renderMovies(movies, container) {
-  container.innerHTML = '';
-  movies.forEach((movie, index) => {
-    const movieCard = document.createElement('div');
-    movieCard.classList.add('movie-card');
-
-    movieCard.innerHTML = `
-      <img src="/MoviesWeb/images/${movie.image}" alt="${movie.title} poster" class="movie-image" />
-      <h3 class="movie-title">${movie.title}</h3>
-      <p class="movie-summary">${movie.summary}</p>
-      <button class="info-button" data-index="${index}">+ Info</button>
-    `;
-
-    container.appendChild(movieCard);
-  });
-}
-
-// Function to open the popup with movie details
 export function openPopup(movie, popupElement) {
+  // Título
   popupElement.querySelector('#popupTitle').textContent = movie.title;
-  popupElement.querySelector('#popupImage').src = movie.image;
-  popupElement.querySelector('#popupImage').alt = `${movie.title} poster`;
+
+  // Imagen
+  const imageElement = popupElement.querySelector('#popupImage');
+
+  // Controlador de errores para la imagen
+  imageElement.onerror = function () {
+    this.src = 'images/default.jpg'; // Imagen predeterminada si falla la carga.
+    this.alt = 'Image not available';
+  };
+
+  // Resto de la información
   popupElement.querySelector('#popupSummary').textContent = movie.summary;
   popupElement.querySelector('#popupGenre').textContent = movie.genre.join(', ');
   popupElement.querySelector('#popupDuration').textContent = movie.duration;
   popupElement.querySelector('#popupReleaseDate').textContent = movie.releaseDate;
   popupElement.querySelector('#popupCast').textContent = movie.casting.join(', ');
 
+  // Mostrar popup
   popupElement.classList.remove('hidden');
 }
 
@@ -187,17 +28,45 @@ export function closePopup(popupElement) {
   popupElement.classList.add('hidden');
 }
 
+import { movies } from '../Data/data.js';
+
+// Render movies
+export function renderMovies(moviesArray, container) {
+  container.innerHTML = ''; // Clear previous content
+  moviesArray.forEach((movie) => {
+    const movieCard = document.createElement('div');
+    movieCard.classList.add('movie-card');
+    movieCard.innerHTML = `
+      <img src="/MoviesWeb/images/${movie.image}" alt="${movie.title} poster">
+      <h3>${movie.title}</h3>
+      <p>Summary: ${movie.summary}</p>
+      <p>Genre: ${movie.genre.join(', ')}</p>
+      <p>Release Date: ${movie.releaseDate}</p>
+    `;
+    container.appendChild(movieCard);
+  });
+}
+
 export function initializeSearch() {
-  // Obtiene el elemento del campo de búsqueda
-  const searchInput = document.getElementById("search-input");
+  const searchInput = document.getElementById('searchInput');
+  const moviesList = document.getElementById('moviesList');
 
-  // Agrega un evento al campo de búsqueda para detectar entradas de texto
-  searchInput.addEventListener("input", (event) => {
-    const query = event.target.value; // Obtiene el texto ingresado
+  renderMovies(movies, moviesList);
 
-    // Llama a la función searchMovies para filtrar las películas con una promesa
-    searchMovies(query).then((filteredMovies) => {
-      renderMovies(filteredMovies); // Renderiza las películas filtradas
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+
+    new Promise((resolve) => {
+      const filteredMovies = movies.filter((movie) => {
+        return (
+          movie.title.toLowerCase().includes(query) ||
+          movie.genre.some((g) => g.toLowerCase().includes(query)) ||
+          movie.casting.some((c) => c.toLowerCase().includes(query))
+        );
+      });
+      setTimeout(() => resolve(filteredMovies), 300); // Simulate API delay
+    }).then((filteredMovies) => {
+      renderMovies(filteredMovies, moviesList);
     });
   });
 }

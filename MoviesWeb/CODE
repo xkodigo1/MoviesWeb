@@ -1,0 +1,707 @@
+HTML 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Films</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <img src="img/png-transparent-cinemark-theatres-landmark-theatres-film-century-theatres-others-text-logo-monochrome-removebg-preview.png" alt="Royal Films" class="logo">
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">CARTELERA</a>
+                <a href="#" class="nav-link">MULTICINES</a>
+            </nav>
+            <div class="header-buttons">
+                <button class="btn btn-outline">BUCARAMANGA</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="hero">
+        <img src="https://admin.cinemasroyalfilms.com/assets/images/banners/1733763855532-COMO%20ENTRENAR%20A%20TU%20DRAGON%201800x466.png" alt="How to Train Your Dragon" class="hero-image">
+        <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Movie Listings -->
+    <main class="container">
+        <div class="movies-header">
+            <h2>CARTELERA BUCARAMANGA</h2>
+            <div class="filter-buttons">
+                <button class="btn btn-primary active">Cartelera</button>
+                <button class="btn btn-outline">Próximamente</button>
+            </div>
+        </div>
+
+        <h1>Find</h1><h2>your movie</h2>
+       
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search movie...">
+        </div>
+
+        <div class="movies-grid" id="moviesGrid">
+        
+        </div>
+    </main>
+
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <p id="modalDescription"></p>
+            <button id="closeModal" class="btn">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+CSS
+
+
+:root {
+    --primary-color: #002B73;
+    --white: #ffffff;
+    --gray-200: #e5e7eb;
+    --yellow-400: #facc15;
+    --yellow-500: #eab308;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header Styles */
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 40px;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: none;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline {
+    background-color: #002B73;
+    border: 1px solid var(--white);
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Hero Styles */
+.hero {
+    position: relative;
+    height: 400px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+}
+
+.hero-content h1 {
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Movies Section */
+.movies-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.movie-card {
+    background: var(--white);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.movie-poster-container {
+    position: relative;
+    height: 400px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background-color: var(--yellow-500);
+    color: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.movie-info {
+    padding: 1rem;
+}
+
+.movie-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.movie-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.genre-badge {
+    background-color: var(--gray-200);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.movie-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.star {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--gray-200);
+}
+
+.star.filled {
+    fill: var(--yellow-400);
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+    }
+    
+    .movies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .movies-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    padding-left: 35px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 50%;
+    background-image: url(../img/libro-abierto-con-lupa.png); 
+    background-repeat: no-repeat;
+    background-position: 10px center; 
+    background-size: 20px; 
+
+  }
+
+input {
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+  
+  @media only screen and (max-width: 767px){
+    .search-bar input {
+      padding: 10px;
+      padding-left: 35px; 
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      background-image: url(../img/libro-abierto-con-lupa.png); 
+      background-repeat: no-repeat;
+      background-position: 10px center; 
+      background-size: 20px; 
+  
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; 
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal img {
+    width: 35vh;
+    height: 50vh;
+    margin-bottom: 15px;
+  }
+   JS
+   
+const movies = [
+    {
+        id: 1,
+        title: "Terremoto 8.5 Grados",
+        poster: "img/terremoto.jpg",
+        genres: ["Acción", "Suspenso"],
+        rating: 2,
+        isNew: true,
+        proxi: false
+    },
+    {
+        id: 2,
+        title: "Sonic 3",
+        poster: "img/sonic3.jpg",
+        genres: ["Aventura", "Animada"],
+        rating: 4,
+        isNew: false,
+        proxi: true
+    },
+    {
+        id: 3,
+        title: "Mufasa: El Rey León",
+        poster: "img/mufasa.jpg",
+        genres: ["Acción", "Aventura"],
+        rating: 4,
+        isNew: false,
+        proxi: true
+    },
+    {
+        id: 4,
+        title: "Nosferatu",
+        poster: "img/41483f36512c3aeaf1eed3b669bccf80.webp",
+        genres: ["Terror", "Thriller", "Misterio"],
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },
+    {
+        id: 5,
+        title: "Robot salvaje",
+        poster: "img/02.jpg",
+        genres: ["Terror", "Thriller", "Misterio"],
+        rating: 3,
+        isNew: false,
+        proxi: true
+    }, 
+    {
+        id: 6,
+        title: "El tiempo que tenemos",
+        poster: "img/1248.jpg",
+        genres: ["Terror", "Thriller", "Misterio"],
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },
+    {
+        id: 7,
+        title: "La isla siniestra",
+        poster: "img/isla.webp",
+        genres: ["Terror", "Thriller", "Misterio"],
+        rating: 3,
+        isNew: false,
+        proxi: true
+    },
+    {
+        id: 8,
+        title: "El club de la pelea",
+        poster: "img/club.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: true
+    },
+    {
+        id: 9,
+        title: "Suzume",
+        poster: "img/suzume.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: true
+    },{
+        id: 10,
+        title: " Kimetsu no Yaiba",
+        poster: "img/kimetsu.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: true
+    },{
+        id: 11,
+        title: "Se levanta el viento",
+        poster: "img/elviento.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: true,
+        proxi: false
+    },
+    {
+        id: 12,
+        title: "La princesa Mononoke",
+        poster: "img/mnonoke.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: true
+    },
+    {
+        id: 13,
+        title: "Mi vecino Totoro",
+        poster: "img/Totoroposterzima.webp",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: true
+    },
+    {
+        id: 14,
+        title: "Howl's",
+        poster: "img/howls_moving_castle_1_9.webp",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },
+    {
+        id: 15,
+        title: "Quiero Comerme TU prancreas",
+        poster: "img/Quiero_comerme_tu_paancreas-973094518-large.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 5,
+        isNew: true,
+        proxi: false
+    },
+    {
+        id: 16,
+        title: "One day",
+        poster: "img/oneday.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 5,
+        isNew: true,
+        proxi: false
+    },
+    {
+        id: 17,
+        title: "A dos metros de ti",
+        poster: "img/ados.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },
+    {
+        id: 18,
+        title: "Bajo la misma estrella",
+        poster: "img/estrella.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },
+    {
+        id: 19,
+        title: "500 dias con ella",
+        poster: "img/500.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },{
+        id: 20,
+        title: "Diario de una pasion",
+        poster: "img/diario.jpg",
+        genres: ["Terror", "Thriller", "Misterio"], 
+        rating: 3,
+        isNew: false,
+        proxi: false
+    },
+    
+
+];
+
+
+function createStarRating(rating) {
+    return Array(5).fill(null)
+        .map((_, i) => `<svg class="star ${i < rating ? 'filled' : ''}" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>`)
+        .join('');
+}
+
+function createMovieCard(movie) {
+
+    return `
+        <div class="movie-card">
+            <div class="movie-poster-container">
+                <img src="${movie.poster}" alt="${movie.title}" class="movie-poster">
+                ${movie.isNew ? '<span class="movie-badge">Top Movie</span>' : ''}
+
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <div class="movie-genres">
+                    ${movie.genres.map(genre => `<span class="genre-badge">${genre}</span>`).join('')}
+                </div>
+                <div class="movie-footer">
+                    <div class="star-rating">
+                        ${createStarRating(movie.rating)}
+                    </div>
+                    <button class="btn btn-outline" data-movie-id="${movie.id}">Ver más</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+
+function renderMovies(proxiFilter = false) {
+    const moviesGrid = document.getElementById('moviesGrid');
+    
+  
+    const filteredMovies = movies.filter(movie => movie.proxi === proxiFilter);
+
+    if (moviesGrid) {
+        moviesGrid.innerHTML = filteredMovies.map(createMovieCard).join('');
+    } else {
+        console.error('Movies grid element not found');
+    }
+}
+
+function renderMoviesproxiammente (proxiFilter = true) {
+    const moviesGrid = document.getElementById('moviesGrid');
+    
+    
+    const filteredMovies = movies.filter(movie => movie.proxi === proxiFilter);
+
+    if (moviesGrid) {
+        moviesGrid.innerHTML = filteredMovies.map(createMovieCard).join('');
+    } else {
+        console.error('Movies grid element not found');
+    }
+}
+
+
+
+
+function addEventListeners() {
+    const filterButtons = document.querySelectorAll('.filter-buttons .btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+         
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            button.classList.add('active');
+
+            
+            if (button.classList.contains('btn-primary')) {
+                renderMovies(false); 
+                renderMoviesproxiammente(true); 
+            }
+        });
+    });
+
+
+    const moviesGrid = document.getElementById('moviesGrid');
+    if (moviesGrid) {
+        moviesGrid.addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('btn-outline')) {
+                const movieId = parseInt(event.target.getAttribute('data-movie-id'));
+                showMovieDetails(movieId);
+            }
+        });
+    }
+
+    // Manejar el clic en el botón de cerrar del modal
+    const closeModalButton = document.getElementById('closeModal');
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', closeModal);
+    }
+}
+
+function filterMoviesByTitle(searchText) {
+    const moviesGrid = document.getElementById('moviesGrid');
+    const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchText.toLowerCase()));
+
+    if (moviesGrid) {
+        moviesGrid.innerHTML = filteredMovies.map(createMovieCard).join('');
+    } else {
+        console.error('Movies grid element not found');
+    }
+}
+
+
+function addSearchEventListener() {
+    const searchInput = document.getElementById('searchInput');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', (event) => {
+            const searchText = event.target.value.trim();
+            filterMoviesByTitle(searchText); 
+        });
+    } else {
+        console.error('Search input element not found');
+    }
+}
+
+// Función para mostrar los detalles de una película
+function showMovieDetails(movieId) {
+    const movie = movies.find(m => m.id === movieId);
+    if (movie) {
+        const modalImage = document.getElementById('modalImage');
+        const modalDescription = document.getElementById('modalDescription');
+        const modal = document.getElementById('confirmationModal');
+
+        modalImage.src = movie.poster;
+        modalDescription.textContent = `Descripción de la película: ${movie.title}`;
+
+        modal.style.display = 'flex';
+    }
+}
+
+// Función para cerrar el modal
+function closeModal() {
+    const modal = document.getElementById('confirmationModal');
+    modal.style.display = 'none';
+}
+
+function init() {
+    renderMovies(false);
+    addEventListeners();  
+    addSearchEventListener();  
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+
+
+
+console.log('Movie data:', movies);
+console.log('Sample movie card HTML:', createMovieCard(movies[0]));
+
+
