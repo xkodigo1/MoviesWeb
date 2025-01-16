@@ -161,7 +161,7 @@ export function renderMovies(movies, container) {
       <img src="/MoviesWeb/images/${movie.image}" alt="${movie.title} poster" class="movie-image" />
       <h3 class="movie-title">${movie.title}</h3>
       <p class="movie-summary">${movie.summary}</p>
-      <button class="info-button" data-index="${index}">More Information</button>
+      <button class="info-button" data-index="${index}">+ Info</button>
     `;
 
     container.appendChild(movieCard);
@@ -187,53 +187,17 @@ export function closePopup(popupElement) {
   popupElement.classList.add('hidden');
 }
 
+export function initializeSearch() {
+  // Obtiene el elemento del campo de búsqueda
+  const searchInput = document.getElementById("search-input");
 
-/**
- * Renderiza las películas en la página
- * @param {Array} movieList - Array de películas a mostrar
- */
-export function renderMovie(movieList) {
-  const moviesContainer = document.getElementById("movies-container");
-  moviesContainer.innerHTML = ""; // Limpia las películas actuales
+  // Agrega un evento al campo de búsqueda para detectar entradas de texto
+  searchInput.addEventListener("input", (event) => {
+    const query = event.target.value; // Obtiene el texto ingresado
 
-  movieList.forEach((movie) => {
-    const movieCard = document.createElement("div");
-    movieCard.classList.add("movie-card");
-
-    movieCard.innerHTML = `
-      <img src="/MoviesWeb/images/${movie.image}" alt="${movie.title}">
-      <h3>${movie.title}</h3>
-      <p>${movie.summary}</p>
-      <button class="info-button" onclick="showPopup('${movie.title}')">Más información</button>
-    `;
-    moviesContainer.appendChild(movieCard);
-  });
-}
-
-// Event listener para la barra de búsqueda
-document.getElementById("search-input").addEventListener("input", (event) => {
-  const query = event.target.value;
-  searchMovies(query).then((filteredMovies) => {
-    renderMovies(filteredMovies);
-  });
-});
-
-import { movies } from "../Data/data.js";
-
-/**
- * Filtra las películas basándose en el término de búsqueda
- * @param {string} query - El término ingresado por el usuario
- * @returns {Promise<Array>} - Promesa que resuelve en un array de películas filtradas
- */
-export function searchMovies(query) {
-  return new Promise((resolve) => {
-    const filteredMovies = movies.filter((movie) =>
-      Object.values(movie)
-        .flat()
-        .join(" ")
-        .toLowerCase()
-        .includes(query.toLowerCase())
-    );
-    resolve(filteredMovies);
+    // Llama a la función searchMovies para filtrar las películas con una promesa
+    searchMovies(query).then((filteredMovies) => {
+      renderMovies(filteredMovies); // Renderiza las películas filtradas
+    });
   });
 }

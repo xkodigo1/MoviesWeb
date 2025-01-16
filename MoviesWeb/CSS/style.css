@@ -226,20 +226,19 @@ h1 {
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #121212;
+  background-color: #ffffff;
   color: #ffffff;
 }
 
-h1 {
+header {
   text-align: center;
-  margin: 20px 0;
-  color: #e50914;
+  color: #ffffff;
+  background-color: #000000;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: auto;
+  margin-bottom: 2%;
 }
 
 /* Search bar styles */
@@ -254,9 +253,9 @@ h1 {
   max-width: 600px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #e50914;
+  border: 1px solid #000000;
   border-radius: 4px;
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   color: #ffffff;
 }
 
@@ -266,7 +265,7 @@ h1 {
 
 .search-bar input:focus {
   outline: none;
-  border-color: #d40813;
+  border-color: #999999;
 }
 
 /* Movie card styles */
@@ -287,7 +286,7 @@ h1 {
 .movie-card img {
   width: 100%;
   height: auto;
-  border-bottom: 2px solid #e50914;
+  border-bottom: 2px solid #000000;
 }
 
 .movie-card h3 {
@@ -303,8 +302,8 @@ h1 {
 }
 
 .movie-card .info-button {
-  background-color: #e50914;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
   padding: 10px 15px;
   margin: 10px 0;
@@ -314,16 +313,16 @@ h1 {
 }
 
 .movie-card .info-button:hover {
-  background-color: #d40813;
+  background-color: #ffffff;
 }
 
 /* Popup styles */
 .popup {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 20%;
+  left: 25%;
+  width: 60%;
+  height: 60%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;

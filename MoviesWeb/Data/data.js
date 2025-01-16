@@ -170,7 +170,17 @@ export const movies = [
       releaseDate: "May 18, 2001",
       casting: ["Mike Myers", "Eddie Murphy", "Cameron Diaz", "John Lithgow", "Vincent Cassel"],
       image: "movieNineteen.jpg"
+    },
+    {
+      title: "Spirited Away",
+      summary: "A young girl named Chihiro becomes trapped in a mysterious spirit world and must navigate through magical challenges to save her parents and return home.",
+      duration: "125 minutes",
+      genre: ["Animation", "Adventure", "Fantasy"],
+      releaseDate: "July 20, 2001",
+      casting: ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki", "Takashi Naito", "Yumi Tamai"],
+      image: "movieTwenty.jpg"
     }
+    
 ];
    
   
