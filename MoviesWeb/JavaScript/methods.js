@@ -1,72 +1,99 @@
 
-export function openPopup(movie, popupElement) {
+export function displayMovies(container, moviesList) {
+  container.innerHTML = ''; // Limpiar las tarjetas actuales
+  moviesList.forEach(movie => {
+    const card = document.createElement('div');
+    card.className = 'movie-card';
+
+    const image = document.createElement('img');
+    image.src = movie.url;
+    image.alt = movie.title;
+    card.appendChild(image);
+
+    const title = document.createElement('h2');
+    title.textContent = movie.title;
+    card.appendChild(title);
+
+    const summary = document.createElement('p');
+    summary.textContent = movie.summary;
+    card.appendChild(summary);
+
+    const moreInfoButton = document.createElement('button');
+    moreInfoButton.textContent = 'More Info';
+    moreInfoButton.className = 'more-info-btn';
+    moreInfoButton.addEventListener('click', () => showMovieDetails(movie));
+    card.appendChild(moreInfoButton);
+
+    container.appendChild(card);
+  });
+}
+
+// Crear y mostrar el modal con la información adicional
+export function showMovieDetails(movie) {
+  // Crear el fondo del modal
+  const modalBackground = document.createElement('div');
+  modalBackground.className = 'modal-background';
+
+  // Crear el contenido del modal
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+
   // Título
-  popupElement.querySelector('#popupTitle').textContent = movie.title;
+  const title = document.createElement('h2');
+  title.textContent = movie.title;
+  modal.appendChild(title);
+
+  // Género
+  const genre = document.createElement('p');
+  genre.textContent = `Genre: ${movie.genre.join(', ')}`;
+  modal.appendChild(genre);
+
+  // Duración
+  const duration = document.createElement('p');
+  duration.textContent = `Duration: ${movie.duration}`;
+  modal.appendChild(duration);
+
+  // Fecha de estreno
+  const releaseDate = document.createElement('p');
+  releaseDate.textContent = `Release Date: ${movie.releaseDate}`;
+  modal.appendChild(releaseDate);
+
+  // Casting
+  const casting = document.createElement('p');
+  casting.textContent = `Cast: ${movie.casting.join(', ')}`;
+  modal.appendChild(casting);
 
   // Imagen
-  const imageElement = popupElement.querySelector('#popupImage');
+  const image = document.createElement('img');
+  image.src = movie.url;
+  image.alt = movie.title;
+  image.className = 'modal-image';
+  modal.appendChild(image);
 
-  // Controlador de errores para la imagen
-  imageElement.onerror = function () {
-    this.src = 'images/default.jpg'; // Imagen predeterminada si falla la carga.
-    this.alt = 'Image not available';
-  };
+  // Botón para cerrar
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'Close';
+  closeButton.className = 'close-modal-btn';
+  closeButton.addEventListener('click', () => {
+    document.body.removeChild(modalBackground);
+  });
+  modal.appendChild(closeButton);
 
-  // Resto de la información
-  popupElement.querySelector('#popupSummary').textContent = movie.summary;
-  popupElement.querySelector('#popupGenre').textContent = movie.genre.join(', ');
-  popupElement.querySelector('#popupDuration').textContent = movie.duration;
-  popupElement.querySelector('#popupReleaseDate').textContent = movie.releaseDate;
-  popupElement.querySelector('#popupCast').textContent = movie.casting.join(', ');
-
-  // Mostrar popup
-  popupElement.classList.remove('hidden');
+  modalBackground.appendChild(modal);
+  document.body.appendChild(modalBackground);
 }
 
-// Function to close the popup
-export function closePopup(popupElement) {
-  popupElement.classList.add('hidden');
-}
-
-import { movies } from '../Data/data.js';
-
-// Render movies
-export function renderMovies(moviesArray, container) {
-  container.innerHTML = ''; // Clear previous content
-  moviesArray.forEach((movie) => {
-    const movieCard = document.createElement('div');
-    movieCard.classList.add('movie-card');
-    movieCard.innerHTML = `
-      <img src="/MoviesWeb/images/${movie.image}" alt="${movie.title} poster">
-      <h3>${movie.title}</h3>
-      <p>Summary: ${movie.summary}</p>
-      <p>Genre: ${movie.genre.join(', ')}</p>
-      <p>Release Date: ${movie.releaseDate}</p>
-    `;
-    container.appendChild(movieCard);
+// Función para buscar películas con promesa
+export function searchMovies(movies, query) {
+  return new Promise((resolve, reject) => {
+    const filteredMovies = movies.filter(movie =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
+    if (filteredMovies.length > 0) {
+      resolve(filteredMovies);
+    } else {
+      reject('No movies found');
+    }
   });
 }
 
-export function initializeSearch() {
-  const searchInput = document.getElementById('searchInput');
-  const moviesList = document.getElementById('moviesList');
-
-  renderMovies(movies, moviesList);
-
-  searchInput.addEventListener('input', () => {
-    const query = searchInput.value.toLowerCase();
-
-    new Promise((resolve) => {
-      const filteredMovies = movies.filter((movie) => {
-        return (
-          movie.title.toLowerCase().includes(query) ||
-          movie.genre.some((g) => g.toLowerCase().includes(query)) ||
-          movie.casting.some((c) => c.toLowerCase().includes(query))
-        );
-      });
-      setTimeout(() => resolve(filteredMovies), 300); // Simulate API delay
-    }).then((filteredMovies) => {
-      renderMovies(filteredMovies, moviesList);
-    });
-  });
-}

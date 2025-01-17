@@ -7,7 +7,8 @@ export const movies = [
       genre: ["Crime", "Drama"],
       releaseDate: "March 24, 1972",
       casting: ["Marlon Brando", "Al Pacino", "James Caan", "Diane Keaton", "Robert Duvall"],
-      image: "movieOne.jpg"
+      image: "movieOne.jpg",
+      url: "/MoviesWeb/images/movieOne.jpg"
     },
     {
       title: "Forrest Gump",
@@ -16,7 +17,8 @@ export const movies = [
       genre: ["Drama", "Romance"],
       releaseDate: "July 6, 1994",
       casting: ["Tom Hanks", "Robin Wright", "Gary Sinise", "Sally Field", "Mykelti Williamson"],
-      image: "movieTwo.jpg"
+      image: "movieTwo.jpg",
+      url: "/MoviesWeb/images/movieTwo.jpg"
     },
     {
       title: "The Lord of the Rings: The Fellowship of the Ring",
@@ -25,7 +27,8 @@ export const movies = [
       genre: ["Adventure", "Fantasy"],
       releaseDate: "December 19, 2001",
       casting: ["Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Sean Astin", "Orlando Bloom"],
-      image: "movieThree.jpg"
+      image: "movieThree.jpg",
+      url: "/MoviesWeb/images/movieThree.jpg"
     },
     {
       title: "The Matrix",
@@ -34,7 +37,8 @@ export const movies = [
       genre: ["Action", "Sci-Fi"],
       releaseDate: "March 31, 1999",
       casting: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving", "Joe Pantoliano"],
-      image: "movieFour.jpg"
+      image: "movieFour.jpg",
+      url: "/MoviesWeb/images/movieFour.jpg"
     },
     {
       title: "Gladiator",
@@ -43,7 +47,8 @@ export const movies = [
       genre: ["Action", "Adventure", "Drama"],
       releaseDate: "May 5, 2000",
       casting: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen", "Oliver Reed", "Derek Jacobi"],
-      image: "movieFive.jpg"
+      image: "movieFive.jpg",
+      url: "/MoviesWeb/images/movieFive.jpg"
     },
     {
       title: "Titanic",
@@ -52,7 +57,8 @@ export const movies = [
       genre: ["Drama", "Romance"],
       releaseDate: "December 19, 1997",
       casting: ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane", "Kathy Bates", "Frances Fisher"],
-      image: "movieSix.jpg"
+      image: "movieSix.jpg",
+      url: "/MoviesWeb/images/movieSix.jpg"
     },
     {
       title: "The Dark Knight",
@@ -61,7 +67,8 @@ export const movies = [
       genre: ["Action", "Crime", "Drama"],
       releaseDate: "July 18, 2008",
       casting: ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Michael Caine", "Maggie Gyllenhaal"],
-      image: "movieSeven.jpg"
+      image: "movieSeven.jpg",
+      url: "/MoviesWeb/images/movieSeven.jpg"
     },
     {
       title: "Life is Beautiful",
@@ -70,7 +77,8 @@ export const movies = [
       genre: ["Comedy", "Drama", "War"],
       releaseDate: "December 20, 1997",
       casting: ["Roberto Benigni", "Nicoletta Braschi", "Giorgio Cantarini", "Giustino Durano", "Horst Buchholz"],
-      image: "movieEight.jpg"
+      image: "movieEight.jpg",
+      url: "/MoviesWeb/images/movieEight.jpg"
     },
     {
       title: "Coco",
@@ -79,7 +87,8 @@ export const movies = [
       genre: ["Animation", "Adventure", "Family"],
       releaseDate: "November 22, 2017",
       casting: ["Anthony Gonzalez", "Gael García Bernal", "Benjamin Bratt", "Alanna Ubach", "Renee Victor"],
-      image: "movieNine.jpg"
+      image: "movieNine.jpg",
+      url: "/MoviesWeb/images/movieNine.jpg"
     },
     {
       title: "Inception",
@@ -88,7 +97,8 @@ export const movies = [
       genre: ["Action", "Adventure", "Sci-Fi"],
       releaseDate: "July 16, 2010",
       casting: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page", "Tom Hardy", "Ken Watanabe"],
-      image: "movieTen.jpg"
+      image: "movieTen.jpg",
+      url: "/MoviesWeb/images/movieTen.jpg"
     },
     {
       title: "Jurassic Park",
@@ -97,7 +107,8 @@ export const movies = [
       genre: ["Adventure", "Sci-Fi", "Thriller"],
       releaseDate: "June 11, 1993",
       casting: ["Sam Neill", "Laura Dern", "Jeff Goldblum", "Richard Attenborough", "Samuel L. Jackson"],
-      image: "movieEleven.jpg"
+      image: "movieEleven.jpg",
+      url: "/MoviesWeb/images/movieEleven.jpg"
     },
     {
       title: "The Lion King",
@@ -106,7 +117,8 @@ export const movies = [
       genre: ["Animation", "Adventure", "Drama"],
       releaseDate: "June 24, 1994",
       casting: ["Matthew Broderick", "Jeremy Irons", "James Earl Jones", "Nathan Lane", "Whoopi Goldberg"],
-      image: "movieTwelve.jpg"
+      image: "movieTwelve.jpg",
+      url: "/MoviesWeb/images/movieTwelve.jpg"
     },
     {
       title: "Pulp Fiction",
@@ -115,7 +127,8 @@ export const movies = [
       genre: ["Crime", "Drama"],
       releaseDate: "October 14, 1994",
       casting: ["John Travolta", "Samuel L. Jackson", "Uma Thurman", "Bruce Willis", "Ving Rhames"],
-      image: "movieThirteen.jpg"
+      image: "movieThirteen.jpg",
+      url: "/MoviesWeb/images/movieThirteen.jpg"
     },
     {
       title: "Parasite",
@@ -124,7 +137,8 @@ export const movies = [
       genre: ["Comedy", "Drama", "Thriller"],
       releaseDate: "May 30, 2019",
       casting: ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong", "Park So-dam", "Choi Woo-shik"],
-      image: "movieFourteen.jpg"
+      image: "movieFourteen.jpg",
+      url: "/MoviesWeb/images/movieFourteen.jpg"
     },
     {
       title: "Avengers: Endgame",
@@ -133,7 +147,8 @@ export const movies = [
       genre: ["Action", "Adventure", "Sci-Fi"],
       releaseDate: "April 26, 2019",
       casting: ["Robert Downey Jr.", "Chris Evans", "Scarlett Johansson", "Mark Ruffalo", "Chris Hemsworth"],
-      image: "movieFifteen.jpg"
+      image: "movieFifteen.jpg",
+      url: "/MoviesWeb/images/movieFifteen.jpg"
     },
     {
       title: "Interstellar",
@@ -142,7 +157,8 @@ export const movies = [
       genre: ["Adventure", "Drama", "Sci-Fi"],
       releaseDate: "November 7, 2014",
       casting: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain", "Michael Caine", "Timothée Chalamet"],
-      image: "movieSixteen.jpg"
+      image: "movieSixteen.jpg",
+      url: "/MoviesWeb/images/movieSixteen.jpg"
     },
     {
       title: "Pan's Labyrinth",
@@ -151,7 +167,8 @@ export const movies = [
       genre: ["Drama", "Fantasy", "War"],
       releaseDate: "October 11, 2006",
       casting: ["Ivana Baquero", "Sergi López", "Maribel Verdú", "Doug Jones", "Álex Angulo"],
-      image: "movieSeventeen.jpg"
+      image: "movieSeventeen.jpg",
+      url: "/MoviesWeb/images/movieSeventeen.jpg"
     },
     {
       title: "Finding Nemo",
@@ -160,7 +177,8 @@ export const movies = [
       genre: ["Animation", "Adventure", "Comedy"],
       releaseDate: "May 30, 2003",
       casting: ["Albert Brooks", "Ellen DeGeneres", "Alexander Gould", "Willem Dafoe", "Brad Garrett"],
-      image: "movieEighteen.jpg"
+      image: "movieEighteen.jpg",
+      url: "/MoviesWeb/images/movieEighteen.jpg"
     },
     {
       title: "Shrek",
@@ -169,7 +187,8 @@ export const movies = [
       genre: ["Animation", "Adventure", "Comedy"],
       releaseDate: "May 18, 2001",
       casting: ["Mike Myers", "Eddie Murphy", "Cameron Diaz", "John Lithgow", "Vincent Cassel"],
-      image: "movieNineteen.jpg"
+      image: "movieNineteen.jpg",
+      url: "/MoviesWeb/images/movieNineteen.jpg"
     },
     {
       title: "Spirited Away",
@@ -178,7 +197,8 @@ export const movies = [
       genre: ["Animation", "Adventure", "Fantasy"],
       releaseDate: "July 20, 2001",
       casting: ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki", "Takashi Naito", "Yumi Tamai"],
-      image: "movieTwenty.jpg"
+      image: "movieTwenty.jpg",
+      url: "/MoviesWeb/images/movieTwenty.jpg"
     }
     
 ];

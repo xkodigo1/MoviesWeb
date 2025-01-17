@@ -3,39 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Cards</title>
+  <title>Movies Web</title>
   <link rel="stylesheet" href="/MoviesWeb/CSS/style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <p>CinemaWeb</p>
-    </header>
-    <div class="search-container">
-      <input
-        type="text"
-        id="searchInput"
-        class="search-input"
-        placeholder="Search for a movie by title, genre, or cast..."/>
-    </div>
-    <div id="moviesList" class="movies"></div>
-    <div id="movies-container" class="movies"></div>
-    <div class="movies" id="movieContainer">
-    </div>
-  </div>
-  <div id="popup" class="popup hidden">
-    <div class="popup-content">
-      <span class="close-button" id="closePopup">&times;</span>
-      <h2 id="popupTitle"></h2>
-      <img id="popupImage" alt="Movie poster" />
-      <p><strong>Description:</strong> <span id="popupSummary"></span></p>
-      <p><strong>Genre:</strong> <span id="popupGenre"></span></p>
-      <p><strong>Duration:</strong> <span id="popupDuration"></span></p>
-      <p><strong>Release Date:</strong> <span id="popupReleaseDate"></span></p>
-      <p><strong>Cast:</strong> <span id="popupCast"></span></p>
-    </div>
-  </div>
-
+  <header>
+    <h1>Movies Web</h1>
+    <input 
+      type="text" 
+      id="search-bar" 
+      placeholder="Search movies by title..." 
+      class="search-bar"
+    >
+  </header>
+  <main>
+    <div id="movies-container" class="movies-container"></div>
+  </main>
   <script type="module" src="/MoviesWeb/JavaScript/app.js"></script>
 </body>
 </html>
